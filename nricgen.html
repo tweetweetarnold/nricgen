@@ -1,0 +1,58 @@
+<html ng-app="nricgen">
+<head>	
+	<title>{{appName}}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>	
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	<script src="nricgen.js"></script>
+</head>
+<body ng-controller="controller">		
+	<div class="container">
+		
+		<div class="page-header">
+			<h1>{{appName}}</h1>
+		</div>
+
+		<form class="form-inline" role="form">
+			<div class="form-group">
+				<label class="sr-only" for="nricType">Type</label>
+				<select id="nricType" class="input-sm form-control" ng-model="nricType">
+					<option value="NRIC">NRIC</option>
+					<option value="FIN">FIN</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label class="sr-only" for="number">Number</label>
+				<input id="number" type="text" class="input-sm form-control" ng-model="number" placeholder="Number of data" />
+			</div>
+			<button class="btn btn-primary" ng-click="generate($event)"><i class="glyphicon glyphicon-play glyphicon-white"></i> Generate</button>
+		</form>
+
+		<!-- result -->
+		<div class="panel-group" id="accordion">
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+		          Result
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseOne" class="panel-collapse collapse in">
+		      <div class="panel-body">
+		      	<table class="table table-striped">
+		        	<tr ng-repeat="r in result"><td>{{r}}</td></tr>
+		    	</table>
+		      </div>
+		    </div>
+		  </div>		  
+		</div>
+
+	</div>
+
+</body>
+</html>
